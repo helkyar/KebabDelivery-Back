@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 
-// middleware to validate token (protected path)
 const verifyToken = (req, res, next) => {
   const token = req.header("auth-token");
   if (!token) return res.status(401).json({ error: "Acceso denegado" });

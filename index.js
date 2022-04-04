@@ -9,7 +9,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(require("express").json());
 
-app.use("/api", require("./routes"));
+app.use("/", require("./routes"));
 
 app.listen(PORT, () => {
   console.log(`Server running on port: ${PORT}`);

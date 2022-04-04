@@ -4,8 +4,8 @@ module.exports = class Manager {
   static clientParams = {
     user: process.env.DBUSER,
     host: process.env.DBHOST,
-    name: process.env.DBNAME,
-    pswd: process.env.DBPSWD,
+    database: process.env.DBNAME,
+    password: process.env.DBPSWD,
     port: process.env.DBPORT,
   };
 
@@ -20,10 +20,10 @@ module.exports = class Manager {
 
       return data.rows.map((e) => new Model(e));
 
-      //Returns undefined to diferenciate from empty array (no data)
+      //On error returns: "null"; to diferenciate from no data: "[]"
     } catch (error) {
       console.log("Query Error: ", query, error);
-      return undefined;
+      return null;
 
       //Close connection
     } finally {
