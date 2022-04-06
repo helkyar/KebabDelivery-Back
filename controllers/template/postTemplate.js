@@ -6,9 +6,8 @@ async function postTemplate(req, res) {
   //(!) Validation
   const template = await TemplateManager.create(data);
   //(!) Universal manager -> model response
-  console.log(template[0].getObject());
   template !== null
-    ? res.status(200).json(template[0].getObject())
+    ? res.status(200).json(template[0])
     : res.status(400).json({ error: "Wrong format" });
 }
 
