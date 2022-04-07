@@ -1,46 +1,28 @@
-let Manager = require("./Manager");
-let Template = require("./models/TemplateModel");
+const Manager = require("./Manager");
+const Template = require("./models/TemplateModel");
 
 class TemplateManager extends Manager {
-  static table = "template";
+  static table = "templates";
   static columns = ["column1", "column2"];
-
-  // Query preparation __________________________________________________________________
-  static queries = {
-    getAll: `SELECT * FROM ${this.table}`,
-    getOne: `SELECT * FROM ${this.table} WHERE id=$1`,
-    post: `INSERT INTO ${this.table} (${this.columns}) VALUES
-                     (${this.columnsVariables()}) RETURNING *;`,
-    patch: `UPDATE ${this.table} SET ${this.updateQuery()}
-                      WHERE id = $${this.columns.length + 1} RETURNING *;`,
-    delete: `DELETE FROM ${this.table} WHERE id=$1`,
-  };
-
-  static updateQuery() {
-    return this.columns.map((col, i) => `${col} = $${i + 1} `);
-  }
-
-  static columnsVariables() {
-    return this.columns.map((c, i) => `$${i + 1}`);
-  }
+  static queries = Manager.createQuerys(this.table, this.columns);
 
   // Query Execution _______________________________________________________________________
   static async findAll() {
-    return await this.executeQuery(Template, this.queries.getAll);
+    return await this.executeQuery(Template, this.queries.findAll);
   }
 
   static async find({ id }) {
-    return await this.executeQuery(Template, this.queries.getOne, [id]);
+    return await this.executeQuery(Template, this.queries.find, [id]);
   }
 
   static async create({ column1, column2 }) {
     const params = [column1, column2];
-    return await this.executeQuery(Template, this.queries.post, params);
+    return await this.executeQuery(Template, this.queries.insert, params);
   }
 
   static async update({ column1, column2 }, { id }) {
     const params = [column1, column2, id];
-    return await this.executeQuery(Template, this.queries.patch, params);
+    return await this.executeQuery(Template, this.queries.update, params);
   }
 
   static async delete({ id }) {

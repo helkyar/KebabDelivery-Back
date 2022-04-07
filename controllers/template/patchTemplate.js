@@ -8,7 +8,7 @@ async function patchTemplate(req, res) {
   const template = await TemplateManager.update(data, id);
   //(!) Universal manager -> model response
   template !== null
-    ? res.status(200).json(template[0].getObject())
+    ? res.status(200).json(template[0])
     : res.status(400).json({ error: "Wrong format" });
 }
 module.exports = patchTemplate;

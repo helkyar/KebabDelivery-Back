@@ -1,8 +1,8 @@
 const TemplateManager = require(`../../${process.env.MANAGER}/TemplateManager`);
 
 async function delTemplate(req, res) {
-  console.log("Course controller del");
-  const data = req.body;
+  console.log("Template controller del");
+  const data = req.params;
   //(!) Validation
   const template = TemplateManager.delete(data);
   //(!) Universal manager -> model response
