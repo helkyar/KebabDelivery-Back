@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const sequelize = require("../Manager").connect();
+const sequelize = require("../managers/sequelize/Manager").connect();
 
 const Template = sequelize.define(
   // Name is automatically made plural by sequalize, why?
@@ -10,7 +10,7 @@ const Template = sequelize.define(
   },
   {
     timestamps: false,
-  }
+  },
 );
 
 module.exports = Template;
