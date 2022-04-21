@@ -4,7 +4,11 @@ const sequelize = require("../Manager").connect();
 const User = sequelize.define(
   "users",
   {
-    id_user: Sequelize.INTEGER,
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     nombre: Sequelize.STRING,
     username: Sequelize.STRING,
     correo: Sequelize.STRING,
