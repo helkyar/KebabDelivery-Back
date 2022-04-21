@@ -4,15 +4,17 @@ const sequelize = require("../Manager").connect();
 const Repartidor = sequelize.define(
   "Repartidores",
   {
+    id_user: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     rol_id: Sequelize.INTEGER
   },
   {
     timestamps: false,
-    modelName: "Repartidores"
+    modelName: "Repartidor"
   }
 );
-
-
-// Repartidor.belongsTo(User);
 
 module.exports = Repartidor;

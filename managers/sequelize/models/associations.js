@@ -13,9 +13,9 @@ const User = require("./userModel");
 User.hasMany(Administrador);
 User.hasMany(Repartidor);
 User.hasMany(Client);
-Administrador.belongsTo(User, {foreignKey:id_user});
-Repartidor.belongsTo(User, {foreignKey:id_user});
-Client.belongsTo(User, {foreignKey:id_user});
+Administrador.belongsTo(User, {foreignKey:id});
+Repartidor.belongsTo(User, {foreignKey:id});
+Client.belongsTo(User, {foreignKey:id});
 
 //Relaciones Roles > rol admin, rol repartidor y rol cliente
 
@@ -34,7 +34,7 @@ EstadoPedido.belongsTo(Pedido)
 
 //Relaciones Pedidos > Cliente y Repartidor
 
-Pedido.hasOne(Client, {foreignKey: id_client})
+Pedido.hasOne(Client, {foreignKey: id_user})
 Client.belongsTo(Pedido)
-Repartidor.hasOne(Client, {foreignKey: id_repartidor})
+Repartidor.hasOne(Client, {foreignKey: id_user})
 Client.belongsTo(Repartidor)
