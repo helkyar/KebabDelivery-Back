@@ -9,10 +9,22 @@ const User = sequelize.define(
       primaryKey: true,
       autoIncrement: true
     },
-    nombre: Sequelize.STRING,
-    username: Sequelize.STRING,
-    correo: Sequelize.STRING,
-    password: Sequelize.STRING,
+    nombre:  {
+      type: Sequelize.STRING,
+      allowNull: true
+    },
+    username:  {
+      type: Sequelize.STRING,
+      allowNull: true
+    },
+    correo:  {
+      type: Sequelize.STRING,
+      allowNull: true
+    },
+    password:  {
+      type: Sequelize.STRING,
+      allowNull: true
+    },
 
   },
   {
