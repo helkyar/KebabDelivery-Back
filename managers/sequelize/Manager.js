@@ -25,7 +25,13 @@ module.exports = class Manager {
   }
 
   static async executeQuery(model, query, params) {
+<<<<<<< HEAD
     await model.sync({ alter: true });
+=======
+    // (!) Erase once all models are definitive
+    await model.sync({ alter: true });
+
+>>>>>>> 1c1f7ec6b42c0a8a4bc1b15ddf71f9888bf9999f
     const sequelize = await this.connect();
     return await sequelize
       .sync()

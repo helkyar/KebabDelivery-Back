@@ -1,7 +1,7 @@
 {
   "name": "kometapp",
   "version": "1.0.0",
-  "description": "url shorter",
+  "description": "Komet delivery app",
   "main": "index.js",
   "scripts": {
     "test": "test",
