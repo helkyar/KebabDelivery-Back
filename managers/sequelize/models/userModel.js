@@ -7,17 +7,16 @@ const User = sequelize.define(
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
     nombre: Sequelize.STRING,
     username: Sequelize.STRING,
     correo: Sequelize.STRING,
     password: Sequelize.STRING,
-
   },
   {
     timestamps: false,
-    modelName: "User"
+    modelName: "User",
   }
 );
 
