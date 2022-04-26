@@ -9,7 +9,7 @@ const Repartidor = sequelize.define(
       primaryKey: true,
       autoIncrement: true
     },
-    rol_id: Sequelize.INTEGER
+    rol: Sequelize.STRING
   },
   {
     timestamps: false,
