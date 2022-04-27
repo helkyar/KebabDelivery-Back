@@ -7,13 +7,12 @@ const Administrador = sequelize.define(
     id_user: {
       type: Sequelize.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
-    rol: Sequelize.STRING
   },
   {
     timestamps: false,
-    modelName: "Administrador"
+    modelName: "Administrador",
   }
 );
 

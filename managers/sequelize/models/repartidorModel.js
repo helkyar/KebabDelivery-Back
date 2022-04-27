@@ -7,13 +7,14 @@ const Repartidor = sequelize.define(
     id_user: {
       type: Sequelize.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
-    rol: Sequelize.STRING
+    active: Sequelize.STRING,
+    package: Sequelize.INTEGER,
   },
   {
     timestamps: false,
-    modelName: "Repartidor"
+    modelName: "Repartidor",
   }
 );
 

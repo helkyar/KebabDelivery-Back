@@ -7,13 +7,13 @@ const Client = sequelize.define(
     id_user: {
       type: Sequelize.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
-    rol: Sequelize.STRING
+    email: Sequelize.STRING,
   },
   {
     timestamps: false,
-    modelName: "Client"
+    modelName: "Client",
   }
 );
 

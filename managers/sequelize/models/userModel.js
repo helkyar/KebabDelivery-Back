@@ -11,8 +11,8 @@ const User = sequelize.define(
     },
     nombre: Sequelize.STRING,
     username: Sequelize.STRING,
-    correo: Sequelize.STRING,
     password: Sequelize.STRING,
+    rol: Sequelize.STRING,
   },
   {
     timestamps: false,
