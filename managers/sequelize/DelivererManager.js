@@ -6,8 +6,12 @@ module.exports = class DelivererManager extends Manager {
     const params = [{ userid, active, vehicle, coordinates }];
     return await this.executeQuery(Deliverer, this.queries.insert, params);
   }
-  static async delete({ id }) {    
-    const params = { where: { id } };
+  static async delete({ userid }) {    
+    const params = { where: { userid } };
     return await this.executeQuery(Deliverer, this.queries.delete, [params]);
+  }
+  static async update({active, vehicle, coordinates}, { userid }) {
+    const params = [{active, vehicle, coordinates}, { where: { userid } }];
+    return await this.executeQuery(User, this.queries.update, params);
   }
 };

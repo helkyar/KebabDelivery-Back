@@ -9,4 +9,8 @@ module.exports = class AdminManager extends Manager {
     const params = { where: { id } };
     return await this.executeQuery(Admin, this.queries.delete, [params]);
   }
+  static async update({}, { userid }) {
+    const params = [{}, { where: { userid } }];
+    return await this.executeQuery(User, this.queries.update, params);
+  }
 };
