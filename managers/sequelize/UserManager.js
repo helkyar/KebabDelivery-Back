@@ -10,4 +10,8 @@ module.exports = class UserManager extends Manager {
     const params = { where: { email } };
     return await this.executeQuery(User, this.queries.findName, [params]);
   }
+  static async delete({ id }) {    
+    const params = { where: { id } };
+    return await this.executeQuery(User, this.queries.delete, [params]);
+  }
 };
