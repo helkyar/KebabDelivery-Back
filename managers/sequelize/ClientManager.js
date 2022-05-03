@@ -1,13 +1,12 @@
-/* const Manager = require("./Manager");
+const Manager = require("./Manager");
 const Client = require("./models/clientModel");
 
 module.exports = class ClientManager extends Manager {
-  static async create(params) {
-    return await this.executeQuery(Client, this.queries.insert, [params]);
+  static async create({ userid }) {
+    return await this.executeQuery(Client, this.queries.insert, [{ userid }]);
   }
-  static async findName({ username }) {
-    const params = { where: { username } };
-    return await this.executeQuery(User, this.queries.findName, [params]);
+  static async delete({ id }) {    
+    const params = { where: { id } };
+    return await this.executeQuery(Client, this.queries.delete, [params]);
   }
 };
- */
