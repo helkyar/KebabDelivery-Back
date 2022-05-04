@@ -20,7 +20,6 @@ module.exports = class TemplateManager extends Manager {
   }
 
   static async delete({ id }) {
-    console.log(id);
     const params = { where: { id } };
     return await this.executeQuery(Template, this.queries.delete, [params]);
   }
