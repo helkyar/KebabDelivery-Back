@@ -11,6 +11,6 @@ module.exports = class ClientManager extends Manager {
   }
   static async update({}, { userid }) {
     const params = [{}, { where: { userid } }];
-    return await this.executeQuery(User, this.queries.update, params);
+    return await this.executeQuery(Client, this.queries.update, params);
   }
 };

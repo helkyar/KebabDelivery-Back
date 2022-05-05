@@ -2,15 +2,15 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../Manager").connect();
 
-const Pedido = sequelize.define(
-  "pedidos",
+const Order = sequelize.define(
+  "orders",
   {
-    id_pedido: {
+    id_orders: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    id_estado: Sequelize.INTEGER,
+    estado: Sequelize.STRING,
     direccion_recogida: Sequelize.STRING,
     direccion_entrega: Sequelize.STRING,
     id_cliente: Sequelize.STRING,
@@ -22,8 +22,8 @@ const Pedido = sequelize.define(
   },
   {
     timestamps: false,
-    modelName: "Pedido"
+    modelName: "Order"
   }
 );
 
-module.exports = Pedido;
+module.exports = Order;
