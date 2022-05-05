@@ -9,7 +9,14 @@ const User = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    nombre: Sequelize.STRING,
+    phone: {
+      type:DataTypes.STRING,
+      allowNull: true,
+      validate:{
+        is:/[0-9]{3}[0-9]{3}[0-9]{3}/i
+      }
+    },
+    lastName: Sequelize.STRING,
     username: Sequelize.STRING,
     password: Sequelize.STRING,
     rol: Sequelize.STRING,
