@@ -6,11 +6,12 @@ const Repartidor = sequelize.define(
   {
     id_user: {
       type: Sequelize.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
     },
     coordinates: Sequelize.STRING,
-    active: Sequelize.STRING,
+    active: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false,
+    },
     package: Sequelize.INTEGER,
   },
   {
