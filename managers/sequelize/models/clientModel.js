@@ -9,7 +9,6 @@ const Client = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    email: Sequelize.STRING,
   },
   {
     timestamps: false,

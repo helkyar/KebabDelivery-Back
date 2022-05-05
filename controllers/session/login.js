@@ -17,15 +17,15 @@ async function checkLogin(req, res) {
   }
 
   // Cehck password____________________________________
-  const { username, rol, id, password } = user[0];
+  const { email, rol, id, password } = user[0];
   const validPassword = await bcrypt.compare(credentials?.password, password);
   if (!validPassword) {
     return res.status(400).json({ error: "credenciales incorrectas" });
   }
 
   // Create token________________________________________
-  const token = jwt.sign({ id, username }, process.env.TOKEN_SECRET);
-  res.status(200).json({ token, username, id, rol });
+  const token = jwt.sign({ id, email }, process.env.TOKEN_SECRET);
+  res.status(200).json({ token, email, id, rol });
 }
 
 module.exports = checkLogin;

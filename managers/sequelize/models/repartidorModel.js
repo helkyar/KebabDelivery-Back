@@ -9,6 +9,7 @@ const Repartidor = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
+    coordinates: Sequelize.STRING,
     active: Sequelize.STRING,
     package: Sequelize.INTEGER,
   },
