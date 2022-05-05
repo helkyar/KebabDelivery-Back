@@ -1,12 +1,21 @@
 const UserManager = require(`../../${process.env.MANAGER}/UserManager`);
 const getModel = require("./getModelManager");
 
-async function getAllTemplates(req, res) {
-  console.log("Template controller getAll");
-  const templates = await TemplateManager.findAll();
-  templates !== null
-    ? res.status(200).json(templates)
+async function getAllUsersByRol(req, res) {
+  console.log("User controller getRol");
+  const data = req.params;
+  const user = await UserManager.findByValue(data);
+  const RolManager = getModel(data.rol);
+  const allInfo = user.map((userInfo) => {
+      const rolInfo = await RolManager.find(userInfo.id)
+      return {userInfo, rolInfo: rolInfo[0]}
+  });
+  user !== null
+    ? res.status(200).json(allInfo)
     : res.status(400).json({ error: "bad request" });
 }
 
-module.exports = getAllTemplates;
+module.exports = getAllUsersByRol;
+
+// Option 1: search all users of specified rol and then specified info
+// Option 2: joint search with sequelize
