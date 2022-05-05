@@ -8,6 +8,7 @@ async function register(req, res) {
   //(!) Validation
   const salt = await bcrypt.genSalt(10);
   data.password = await bcrypt.hash(data.password, salt);
+  data.rol = "client";
   const user = await UserManager.create(data);
   let client;
   if (user !== null && user[0].id) {
