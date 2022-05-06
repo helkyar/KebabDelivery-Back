@@ -6,8 +6,8 @@ module.exports = class OrderManager extends Manager {
     return await this.executeQuery(Order, this.queries.findAll);
   }
 
-  static async find({ id_orders }) {
-    return await this.executeQuery(Order, this.queries.find, [id_orders]);
+  static async find({ id }) {
+    return await this.executeQuery(Order, this.queries.find, [id]);
   }
 
   static async create(params) {
