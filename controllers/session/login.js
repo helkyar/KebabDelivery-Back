@@ -11,7 +11,7 @@ async function checkLogin(req, res) {
   }
 
   // Search user_______________________________________
-  const user = await UserManager.findName(credentials);
+  const user = await UserManager.findByValue({email: credentials.email});
   if (!user || !user[0]) {
     return res.status(400).json({ error: "credenciales incorrectas" });
   }
