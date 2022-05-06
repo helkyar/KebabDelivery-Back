@@ -21,17 +21,21 @@ module.exports = class OrderManager extends Manager {
       direccion_entrega,
       id_repartidor,
       hora_recogida,
-      hora_entrega
+      hora_entrega,
     },
     { id }
   ) {
-    const params = [{
-      estado,
-      direccion_recogida,
-      direccion_entrega,
-      id_repartidor,
-      hora_recogida,
-      hora_entrega }, { where: { id } }];
+    const params = [
+      {
+        estado,
+        direccion_recogida,
+        direccion_entrega,
+        id_repartidor,
+        hora_recogida,
+        hora_entrega,
+      },
+      { where: { id, returning: true } },
+    ];
     return await this.executeQuery(Order, this.queries.update, params);
   }
 
