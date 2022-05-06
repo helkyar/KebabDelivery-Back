@@ -2,7 +2,6 @@ const OrderManager = require(`../../${process.env.MANAGER}/OrderManager`);
 
 async function getOrder(req, res) {  
   const data = req.params;
-  console.log(req.params);
   //(!) Validation
   const order = await OrderManager.find(data);
   //(!) Universal manager -> model response

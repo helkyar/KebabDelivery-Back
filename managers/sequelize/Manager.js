@@ -37,8 +37,14 @@ module.exports = class Manager {
           : await model[query](...params)
       )
       // (!) Not all res have a get method (delelete, update)
-      .then((res) => res?.get? res.get({ plain: true }) : true)
-      
+      .then((res) => {
+        console.log(res);
+        if (query === this.queries.findAll) {              
+          return res.map((e) => e.dataValues)
+        }
+        return res?.dataValues ? [res.dataValues] : [];
+      })
+
       .catch((error) => {
         console.log("Query Error: ", query, error);
         return null;
