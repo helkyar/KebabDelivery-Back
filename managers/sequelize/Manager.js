@@ -37,7 +37,8 @@ module.exports = class Manager {
           : await model[query](...params)
       )
       // (!) Not all res have a get method (delelete, update)
-      .then((res) => [res?.get({ plain: true })])
+      .then((res) => res?.get? res.get({ plain: true }) : true)
+      
       .catch((error) => {
         console.log("Query Error: ", query, error);
         return null;

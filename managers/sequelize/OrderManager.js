@@ -23,7 +23,7 @@ module.exports = class OrderManager extends Manager {
       hora_recogida,
       hora_entrega
     },
-    { id_orders }
+    { id }
   ) {
     const params = [{
       estado,
@@ -31,12 +31,12 @@ module.exports = class OrderManager extends Manager {
       direccion_entrega,
       id_repartidor,
       hora_recogida,
-      hora_entrega }, { where: { id_orders } }];
+      hora_entrega }, { where: { id } }];
     return await this.executeQuery(Order, this.queries.update, params);
   }
 
-  static async delete({ id_orders }) {
-    const params = { where: { id_orders } };
+  static async delete({ id }) {
+    const params = { where: { id } };
     return await this.executeQuery(Order, this.queries.delete, [params]);
   }
 };

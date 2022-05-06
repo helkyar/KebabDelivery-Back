@@ -5,7 +5,7 @@ const sequelize = require("../Manager").connect();
 const Order = sequelize.define(
   "orders",
   {
-    id_orders: {
+    id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true

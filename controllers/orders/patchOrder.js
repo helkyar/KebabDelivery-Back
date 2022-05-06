@@ -8,7 +8,7 @@ async function patchOrder(req, res) {
   const order = await OrderManager.update(data, id);
   //(!) Universal manager -> model response
   order !== null
-    ? res.status(200).json(order[0])
+    ? res.status(200).json(data)
     : res.status(400).json({ error: "Wrong format" });
 }
 module.exports = patchOrder;
