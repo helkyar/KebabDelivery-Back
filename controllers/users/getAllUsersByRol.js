@@ -7,7 +7,7 @@ async function getAllUsersByRol(req, res) {
   const user = await UserManager.findByValue(data);
   const RolManager = getModel(data.rol);
   const allInfo = user.map(async (userInfo) => {
-    const rolInfo = await RolManager.find(userInfo.id);
+    const rolInfo = await RolManager.findByValue({userid: userInfo.id});
     return { userInfo, rolInfo: rolInfo[0] };
   });
   user !== null

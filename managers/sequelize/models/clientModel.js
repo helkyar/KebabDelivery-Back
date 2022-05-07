@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const sequelize = require("../Manager").connect();
 
 const Client = sequelize.define(
-  "Clients",
+  "clients",
   {
     userid: {
       type: Sequelize.INTEGER,

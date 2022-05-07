@@ -6,6 +6,9 @@ module.exports = class UserManager extends Manager {
     const params = [{ name, surname, phone, email, password, rol }];
     return await this.executeQuery(User, this.queries.insert, params);
   }
+  static async find({ id }) {
+    return await this.executeQuery(User, this.queries.find, [id]);
+  }
   static async findByValue(value) {
     const params = { where: value };
     return await this.executeQuery(User, this.queries.findName, [params]);

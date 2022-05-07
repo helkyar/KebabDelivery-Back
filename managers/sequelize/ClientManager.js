@@ -13,4 +13,8 @@ module.exports = class ClientManager extends Manager {
     const params = [{}, { where: { userid } }];
     return await this.executeQuery(Client, this.queries.update, params);
   }
+  static async findByValue(value) {
+    const params = { where: value };
+    return await this.executeQuery(Client, this.queries.findName, [params]);
+  }
 };
