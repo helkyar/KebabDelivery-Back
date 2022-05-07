@@ -14,4 +14,8 @@ module.exports = class DelivererManager extends Manager {
     const params = [{ active, pakage, coordinates }, { where: { userid } }];
     return await this.executeQuery(User, this.queries.update, params);
   }
+  static async findByValue(value) {
+    const params = { where: value };
+    return await this.executeQuery(Deliverer, this.queries.findName, [params]);
+  }
 };
