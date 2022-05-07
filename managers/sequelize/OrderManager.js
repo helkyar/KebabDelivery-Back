@@ -34,7 +34,7 @@ module.exports = class OrderManager extends Manager {
         hora_recogida,
         hora_entrega,
       },
-      { where: { id, returning: true } },
+      { where: { id }, returning: true },
     ];
     return await this.executeQuery(Order, this.queries.update, params);
   }
