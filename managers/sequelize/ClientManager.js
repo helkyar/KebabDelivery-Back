@@ -5,12 +5,13 @@ module.exports = class ClientManager extends Manager {
   static async create({ userid }) {
     return await this.executeQuery(Client, this.queries.insert, [{ userid }]);
   }
-  static async delete({ id }) {    
+  static async delete({ id }) {
     const params = { where: { id } };
     return await this.executeQuery(Client, this.queries.delete, [params]);
   }
-  static async update({}, { userid }) {
-    const params = [{}, { where: { userid } }];
+  static async update(data, { userid }) {
+    console.log(userid, "USERID ID");
+    const params = [{ userid }, { where: { userid }, returning: true }];
     return await this.executeQuery(Client, this.queries.update, params);
   }
   static async findByValue(value) {

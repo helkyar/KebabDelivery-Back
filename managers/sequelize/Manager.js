@@ -38,6 +38,7 @@ module.exports = class Manager {
       )
       .then((res) => {
         if (query === this.queries.update) {
+          console.log(res, "response en manager");
           return res[1].map((e) => e.dataValues);
         } else if (query === this.queries.findAll) {
           return res.map((e) => e.dataValues);
