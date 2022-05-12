@@ -11,7 +11,10 @@ module.exports = class DelivererManager extends Manager {
     return await this.executeQuery(Deliverer, this.queries.delete, [params]);
   }
   static async update({ active, pakage, coordinates }, { userid }) {
-    const params = [{ active, pakage, coordinates }, { where: { userid } }];
+    const params = [
+      { active, pakage, coordinates },
+      { where: { userid }, returning: true },
+    ];
     return await this.executeQuery(User, this.queries.update, params);
   }
   static async findByValue(value) {
