@@ -10,5 +10,6 @@ router.use(require("../middlewares/token"));
 router.use("/template", require("./template"));
 router.use("/users", require("./users"));
 router.use("/orders", require("./orders"));
+router.use("/deliverer", require("./deliverer"));
 
 module.exports = router;
