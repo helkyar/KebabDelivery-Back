@@ -2,7 +2,7 @@ const UserManager = require(`../../${process.env.MANAGER}/UserManager`);
 const getModel = require("./getModelManager");
 
 async function getUser(req, res) {
-  console.log("User controller get");
+  console.log("User controller get", req.params);
   const data = req.params;
   console.log(data, "el datas");
   //(!) Validation
