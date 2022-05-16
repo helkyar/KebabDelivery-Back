@@ -1,4 +1,3 @@
-const DelivererManager = require(`../../${process.env.MANAGER}/DelivererManager`);
 const OrderManager = require(`../../${process.env.MANAGER}/OrderManager`);
 
 async function getOrdersForDeliver(req, res) {

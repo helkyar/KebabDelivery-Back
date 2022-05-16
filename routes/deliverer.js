@@ -13,6 +13,7 @@ router.get(
   require("../controllers/deliverer/getOrdersForDeliver")
 );
 router.get("/state/:id", require("../controllers/deliverer/getDelivererState"));
+router.post("/img", require("../controllers/deliverer/postImg"));
 
 router.get("/all", require("../controllers/template/getAllTemplates"));
 router.post("/add", require("../controllers/template/postTemplate"));

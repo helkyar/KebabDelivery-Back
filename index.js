@@ -3,6 +3,29 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
+//EMAIL ____________________________________________
+// const nodemailer = require("nodemailer");
+// nodemailer.createTestAccount;
+// (error, account) => {
+//   const htmlEmail =
+//     "<h3>Email enviado desde react</h3> <ul> <li>Email: javipalacios@gmail.com</li><li>Asunto: test</li></ul> <h3>Mensaje</h3> <>cuerpo del mensaje</>";
+// };
+// let transporter = nodemailer.createTransport({
+//   host: "",
+//   port: "",
+//   auth: { user: "", pass: "" },
+// });
+// let mail = {
+//   from: "",
+//   to: "",
+//   replyTo: "",
+//   subject: "",
+//   text: "",
+//   html: htmlEmail,
+// };
+// transporter.sendMail(mail, (err, info) => {});
+// ____________________________________________
+
 const PORT = process.env.PORT;
 
 app.use(cors());
