@@ -27,6 +27,17 @@ module.exports = class OrderManager extends Manager {
     };
     return await this.executeQuery(Order, this.queries.findAllOf, [params]);
   }
+  static async findCompleted({ id_repartidor }) {
+    // asociados a repartidor no completadas (estado =< 3)
+    // o sin id asignada, no empezados y fecha actual o anterior
+    const params = {
+      where: {
+        id_repartidor,
+        estado: { $gt: 3 },
+      },
+    };
+    return await this.executeQuery(Order, this.queries.findAllOf, [params]);
+  }
 
   static async create(params) {
     return await this.executeQuery(Order, this.queries.insert, [params]);

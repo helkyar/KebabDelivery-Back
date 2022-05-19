@@ -8,8 +8,6 @@ async function getOrdersForDeliver(req, res) {
 
   const orders = await OrderManager.findAvaiable({ id_repartidor: id });
 
-  console.log(id, orders, "HERE MOTHERFUCKER");
-
   orders
     ? res.status(200).json(orders)
     : res.status(400).json({ error: "bad request" });

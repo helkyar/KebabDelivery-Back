@@ -1,7 +1,14 @@
 const app = require("express")();
+const fs = require("fs");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config();
+
+const PORT = process.env.PORT;
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use(require("express").json());
 
 //EMAIL ____________________________________________
 // const nodemailer = require("nodemailer");
@@ -24,13 +31,21 @@ require("dotenv").config();
 //   html: htmlEmail,
 // };
 // transporter.sendMail(mail, (err, info) => {});
+// _____________________________________________
+// SERVE IMG____________________________________
+// app.get("/images", (req, res) => {
+//   // Setting the headers
+//   res.writeHead(200, {
+//     "Content-Type": "image/png",
+//   });
+
+//   // Reading the file
+//   fs.readFile(`static`, function (err, content) {
+//     // Serving the image
+//     res.end(content);
+//   });
+// });
 // ____________________________________________
-
-const PORT = process.env.PORT;
-
-app.use(cors());
-app.use(bodyParser.json());
-app.use(require("express").json());
 
 app.use("/", require("./routes"));
 

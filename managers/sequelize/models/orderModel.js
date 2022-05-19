@@ -18,7 +18,10 @@ const Order = sequelize.define(
     hora_recogida: Sequelize.DATE,
     hora_entrega: Sequelize.DATE,
     codigo_seguimiento: Sequelize.INTEGER,
-    sign: Sequelize.STRING(10000),
+    sign: {
+      type: Sequelize.STRING,
+      defaultValue: "false",
+    },
   },
   {
     timestamps: false,
