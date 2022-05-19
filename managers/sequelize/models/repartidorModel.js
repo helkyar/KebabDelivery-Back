@@ -13,7 +13,7 @@ const Repartidor = sequelize.define(
       type: Sequelize.BOOLEAN,
       defaultValue: false,
     },
-    package: Sequelize.INTEGER,
+    pakage: Sequelize.UUID,
   },
   {
     timestamps: false,
