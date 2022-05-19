@@ -5,15 +5,13 @@ const Client = sequelize.define(
   "clients",
   {
     userid: {
-      type: Sequelize.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
+      type: Sequelize.UUID,
     },
   },
   {
     timestamps: false,
     modelName: "Client",
-  }
+  },
 );
 
 module.exports = Client;

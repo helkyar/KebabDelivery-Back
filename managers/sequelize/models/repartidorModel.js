@@ -5,7 +5,7 @@ const Repartidor = sequelize.define(
   "repartidores",
   {
     userid: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.UUID,
     },
     latitude: Sequelize.FLOAT,
     longitude: Sequelize.FLOAT,

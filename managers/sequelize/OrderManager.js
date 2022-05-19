@@ -45,23 +45,35 @@ module.exports = class OrderManager extends Manager {
 
   static async update(
     {
-      estado,
-      direccion_recogida,
-      direccion_entrega,
-      id_repartidor,
-      hora_recogida,
-      hora_entrega,
+      state,
+      from,
+      to,
+      id_client,
+      id_delivered,
+      pick_up_date,
+      pick_up_time,
+      delivered_time,
+      tracking_code,
+      pakage,
+      letter,
+      comment,
     },
-    { id }
+    { id },
   ) {
     const params = [
       {
-        estado,
-        direccion_recogida,
-        direccion_entrega,
-        id_repartidor,
-        hora_recogida,
-        hora_entrega,
+        state,
+        from,
+        to,
+        id_client,
+        id_delivered,
+        pick_up_date,
+        pick_up_time,
+        delivered_time,
+        tracking_code,
+        pakage,
+        letter,
+        comment,
       },
       { where: { id }, returning: true },
     ];

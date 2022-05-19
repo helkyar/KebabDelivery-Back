@@ -5,15 +5,13 @@ const Administrador = sequelize.define(
   "administradores",
   {
     userid: {
-      type: Sequelize.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
+      type: Sequelize.UUID,
     },
   },
   {
     timestamps: false,
     modelName: "Administrador",
-  }
+  },
 );
 
 module.exports = Administrador;
