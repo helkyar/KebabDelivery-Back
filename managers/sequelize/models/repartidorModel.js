@@ -4,8 +4,8 @@ const sequelize = require("../Manager").connect();
 const Repartidor = sequelize.define(
   "Repartidores",
   {
-    id_user: {
-      type: Sequelize.INTEGER,
+    userid: {
+      type: Sequelize.UUID,
     },
     coordinates: Sequelize.STRING,
     active: {
@@ -17,7 +17,7 @@ const Repartidor = sequelize.define(
   {
     timestamps: false,
     modelName: "Repartidor",
-  }
+  },
 );
 
 module.exports = Repartidor;

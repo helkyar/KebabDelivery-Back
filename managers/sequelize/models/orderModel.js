@@ -1,4 +1,3 @@
-
 const Sequelize = require("sequelize");
 const sequelize = require("../Manager").connect();
 
@@ -6,24 +5,27 @@ const Order = sequelize.define(
   "orders",
   {
     id: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
-      autoIncrement: true
     },
-    estado: Sequelize.STRING,
-    direccion_recogida: Sequelize.STRING,
-    direccion_entrega: Sequelize.STRING,
-    id_cliente: Sequelize.STRING,
-    id_repartidor: Sequelize.STRING,
-    hora_recogida: Sequelize.DATE,
-    hora_entrega: Sequelize.DATE,
-    codigo_seguimiento: Sequelize.INTEGER
-
+    state: Sequelize.STRING,
+    from: Sequelize.STRING,
+    to: Sequelize.STRING,
+    id_client: Sequelize.STRING,
+    id_delivered: Sequelize.STRING,
+    pick_up_date: Sequelize.DATE,
+    pick_up_time: Sequelize.TIME,
+    delivered_time: Sequelize.TIME,
+    tracking_code: Sequelize.INTEGER,
+    pakage: Sequelize.STRING,
+    letter: Sequelize.STRING,
+    comment: Sequelize.STRING,
   },
   {
     timestamps: false,
-    modelName: "Order"
-  }
+    modelName: "Order",
+  },
 );
 
 module.exports = Order;

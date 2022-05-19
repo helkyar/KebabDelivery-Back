@@ -4,16 +4,14 @@ const sequelize = require("../Manager").connect();
 const Administrador = sequelize.define(
   "administradores",
   {
-    id_user: {
-      type: Sequelize.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
+    userid: {
+      type: Sequelize.UUID,
     },
   },
   {
     timestamps: false,
     modelName: "Administrador",
-  }
+  },
 );
 
 module.exports = Administrador;
