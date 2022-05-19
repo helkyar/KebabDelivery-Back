@@ -2,7 +2,7 @@ const app = require("express")();
 const fs = require("fs");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const associations = require('./managers/sequelize/models/associations')
+// const associations = require('./managers/sequelize/models/associations')
 require("dotenv").config();
 
 const PORT = process.env.PORT;
