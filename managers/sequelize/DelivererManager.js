@@ -10,8 +10,24 @@ module.exports = class DelivererManager extends Manager {
     const params = { where: { userid } };
     return await this.executeQuery(Deliverer, this.queries.delete, [params]);
   }
-  static async update({ active, pakage, coordinates }, { userid }) {
-    const params = [{ active, pakage, coordinates }, { where: { userid } }];
-    return await this.executeQuery(User, this.queries.update, params);
+  static async updateActive({ active }, { userid }) {
+    const params = [{ active }, { where: { userid }, returning: true }];
+    return await this.executeQuery(Deliverer, this.queries.update, params);
+  }
+  static async updatePackage({ pakage }, { userid }) {
+    const params = [{ pakage }, { where: { userid }, returning: true }];
+    return await this.executeQuery(Deliverer, this.queries.update, params);
+  }
+  static async updateCoordinates({ longitude, latitude }, { userid }) {
+    console.log(latitude, longitude, userid, "$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    const params = [
+      { longitude, latitude },
+      { where: { userid }, returning: true },
+    ];
+    return await this.executeQuery(Deliverer, this.queries.update, params);
+  }
+  static async findByValue(value) {
+    const params = { where: value };
+    return await this.executeQuery(Deliverer, this.queries.findName, [params]);
   }
 };

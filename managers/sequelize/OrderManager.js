@@ -6,8 +6,37 @@ module.exports = class OrderManager extends Manager {
     return await this.executeQuery(Order, this.queries.findAll);
   }
 
-  static async find({ id_orders }) {
-    return await this.executeQuery(Order, this.queries.find, [id_orders]);
+  static async find({ id }) {
+    return await this.executeQuery(Order, this.queries.find, [id]);
+  }
+
+  static async findAvaiable({ id_repartidor }) {
+    // asociados a repartidor no completadas (estado =< 3)
+    // o sin id asignada, no empezados y fecha actual o anterior
+    const params = {
+      where: {
+        $or: [
+          { id_repartidor, estado: { $lte: 3 } },
+          {
+            id_repartidor: null,
+            estado: 1,
+            dia_recogida: { $lte: new Date() },
+          },
+        ],
+      },
+    };
+    return await this.executeQuery(Order, this.queries.findAllOf, [params]);
+  }
+  static async findCompleted({ id_repartidor }) {
+    // asociados a repartidor no completadas (estado =< 3)
+    // o sin id asignada, no empezados y fecha actual o anterior
+    const params = {
+      where: {
+        id_repartidor,
+        estado: { $gt: 3 },
+      },
+    };
+    return await this.executeQuery(Order, this.queries.findAllOf, [params]);
   }
 
   static async create(params) {
@@ -21,22 +50,26 @@ module.exports = class OrderManager extends Manager {
       direccion_entrega,
       id_repartidor,
       hora_recogida,
-      hora_entrega
+      hora_entrega,
     },
-    { id_orders }
+    { id }
   ) {
-    const params = [{
-      estado,
-      direccion_recogida,
-      direccion_entrega,
-      id_repartidor,
-      hora_recogida,
-      hora_entrega }, { where: { id_orders } }];
+    const params = [
+      {
+        estado,
+        direccion_recogida,
+        direccion_entrega,
+        id_repartidor,
+        hora_recogida,
+        hora_entrega,
+      },
+      { where: { id }, returning: true },
+    ];
     return await this.executeQuery(Order, this.queries.update, params);
   }
 
-  static async delete({ id_orders }) {
-    const params = { where: { id_orders } };
+  static async delete({ id }) {
+    const params = { where: { id } };
     return await this.executeQuery(Order, this.queries.delete, [params]);
   }
 };

@@ -4,7 +4,7 @@ const sequelize = require("../Manager").connect();
 const Administrador = sequelize.define(
   "administradores",
   {
-    id_user: {
+    userid: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true,

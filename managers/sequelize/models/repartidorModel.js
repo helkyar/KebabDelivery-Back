@@ -2,12 +2,13 @@ const Sequelize = require("sequelize");
 const sequelize = require("../Manager").connect();
 
 const Repartidor = sequelize.define(
-  "Repartidores",
+  "repartidores",
   {
-    id_user: {
+    userid: {
       type: Sequelize.INTEGER,
     },
-    coordinates: Sequelize.STRING,
+    latitude: Sequelize.FLOAT,
+    longitude: Sequelize.FLOAT,
     active: {
       type: Sequelize.BOOLEAN,
       defaultValue: false,
@@ -16,7 +17,7 @@ const Repartidor = sequelize.define(
   },
   {
     timestamps: false,
-    modelName: "Repartidor",
+    modelName: "deliverer",
   }
 );
 

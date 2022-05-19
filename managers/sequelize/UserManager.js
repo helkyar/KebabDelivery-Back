@@ -6,6 +6,9 @@ module.exports = class UserManager extends Manager {
     const params = [{ name, surname, phone, email, password, rol }];
     return await this.executeQuery(User, this.queries.insert, params);
   }
+  static async find({ id }) {
+    return await this.executeQuery(User, this.queries.find, [id]);
+  }
   static async findByValue(value) {
     const params = { where: value };
     return await this.executeQuery(User, this.queries.findName, [params]);
@@ -14,12 +17,15 @@ module.exports = class UserManager extends Manager {
     const params = { where: { rol } };
     return await this.executeQuery(User, this.queries.findName, [params]);
   }
-  static async delete({ id }) {    
+  static async delete({ id }) {
     const params = { where: { id } };
     return await this.executeQuery(User, this.queries.delete, [params]);
   }
-  static async update({ name, surname, phone, email, password, rol}, { id }) {
-    const params = [{ name, surname, phone, email, password, rol }, { where: { id } }];
+  static async update({ name, surname, phone, email, password, rol }, { id }) {
+    const params = [
+      { name, surname, phone, email, password, rol },
+      { where: { id }, returning: true },
+    ];
     return await this.executeQuery(User, this.queries.update, params);
   }
 };
