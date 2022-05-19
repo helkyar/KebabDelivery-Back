@@ -9,7 +9,10 @@ const Order = sequelize.define(
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
     },
-    state: Sequelize.STRING,
+    state: {
+      type:Sequelize.STRING,
+      defaultValue: "1"
+    },
     from: Sequelize.STRING,
     to: Sequelize.STRING,
     id_client: Sequelize.STRING,
