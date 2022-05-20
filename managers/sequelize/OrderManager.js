@@ -6,20 +6,20 @@ module.exports = class OrderManager extends Manager {
     return await this.executeQuery(Order, this.queries.findAll);
   }
 
-  static async find({ id }) {
+  static async find({ id }) { 
     return await this.executeQuery(Order, this.queries.find, [id]);
   }
 
-  static async findAvaiable({ id_repartidor }) {
-    // asociados a repartidor no completadas (estado =< 3)
+  static async findAvaiable({ id_deliverer }) {
+    // asociados a repartidor no completadas (state =< 3)
     // o sin id asignada, no empezados y fecha actual o anterior
-    const params = {
+    const params = { 
       where: {
         $or: [
-          { id_repartidor, estado: { $lte: 3 } },
+          { id_deliverer, state: { $lte: 3 } },
           {
-            id_repartidor: null,
-            estado: 1,
+            id_deliverer: null,
+            state: 1,
             dia_recogida: { $lte: new Date() },
           },
         ],
@@ -27,13 +27,13 @@ module.exports = class OrderManager extends Manager {
     };
     return await this.executeQuery(Order, this.queries.findAllOf, [params]);
   }
-  static async findCompleted({ id_repartidor }) {
-    // asociados a repartidor no completadas (estado =< 3)
+  static async findCompleted({ id_deliverer }) {
+    // asociados a repartidor no completadas (state =< 3)
     // o sin id asignada, no empezados y fecha actual o anterior
     const params = {
       where: {
-        id_repartidor,
-        estado: { $gt: 3 },
+        id_deliverer,
+        state: { $gt: 3 },
       },
     };
     return await this.executeQuery(Order, this.queries.findAllOf, [params]);
@@ -49,7 +49,7 @@ module.exports = class OrderManager extends Manager {
       from,
       to,
       id_client,
-      id_delivered,
+      id_deliverer,
       pick_up_date,
       pick_up_time,
       delivered_time,
@@ -66,7 +66,7 @@ module.exports = class OrderManager extends Manager {
         from,
         to,
         id_client,
-        id_delivered,
+        id_deliverer,
         pick_up_date,
         pick_up_time,
         delivered_time,

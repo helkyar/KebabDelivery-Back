@@ -16,7 +16,7 @@ const Order = sequelize.define(
     from: Sequelize.STRING,
     to: Sequelize.STRING,
     id_client: Sequelize.STRING,
-    id_delivered: Sequelize.STRING,
+    id_deliverer: Sequelize.STRING,
     pick_up_date: Sequelize.DATE,
     pick_up_time: Sequelize.TIME,
     delivered_time: Sequelize.TIME,
