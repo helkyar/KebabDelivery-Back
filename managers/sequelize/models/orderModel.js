@@ -10,8 +10,8 @@ const Order = sequelize.define(
       primaryKey: true,
     },
     state: {
-      type:Sequelize.STRING,
-      defaultValue: "1"
+      type: Sequelize.STRING,
+      defaultValue: "0",
     },
     from: Sequelize.STRING,
     to: Sequelize.STRING,
@@ -27,8 +27,8 @@ const Order = sequelize.define(
   },
   {
     timestamps: false,
-    modelName: "Order", 
-  }
+    modelName: "Order",
+  },
 );
 
 module.exports = Order;
