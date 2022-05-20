@@ -2,22 +2,23 @@ const Sequelize = require("sequelize");
 const sequelize = require("../Manager").connect();
 
 const Repartidor = sequelize.define(
-  "Repartidores",
+  "repartidores",
   {
     userid: {
       type: Sequelize.UUID,
     },
-    coordinates: Sequelize.STRING,
+    latitude: Sequelize.FLOAT,
+    longitude: Sequelize.FLOAT,
     active: {
       type: Sequelize.BOOLEAN,
       defaultValue: false,
     },
-    package: Sequelize.INTEGER,
+    pakage: Sequelize.UUID,
   },
   {
     timestamps: false,
-    modelName: "Repartidor",
-  },
+    modelName: "deliverer",
+  }
 );
 
 module.exports = Repartidor;

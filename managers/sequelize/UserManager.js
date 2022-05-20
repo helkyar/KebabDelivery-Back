@@ -26,7 +26,6 @@ module.exports = class UserManager extends Manager {
       { name, surname, phone, email, password, rol },
       { where: { id }, returning: true },
     ];
-    console.log(id, "ID EN MANAGER");
     return await this.executeQuery(User, this.queries.update, params);
   }
 };
