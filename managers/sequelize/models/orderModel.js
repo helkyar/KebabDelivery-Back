@@ -10,25 +10,23 @@ const Order = sequelize.define(
       primaryKey: true,
     },
     state: {
-      type:Sequelize.STRING,
-      defaultValue: "1"
+      type: Sequelize.STRING,
+      defaultValue: "0",
     },
     from: Sequelize.STRING,
     to: Sequelize.STRING,
     id_client: Sequelize.STRING,
-    id_deliverer: Sequelize.STRING,
-    pick_up_date: Sequelize.DATE,
-    pick_up_time: Sequelize.TIME,
-    delivered_time: Sequelize.TIME,
-    tracking_code: Sequelize.INTEGER,
+    id_delivered: Sequelize.STRING,
+    pick_up_date: Sequelize.DATEONLY,
+    delivered_time: Sequelize.STRING,
     pakage: Sequelize.STRING,
     letter: Sequelize.STRING,
     comment: Sequelize.STRING,
   },
   {
     timestamps: false,
-    modelName: "Order", 
-  }
+    modelName: "Order",
+  },
 );
 
 module.exports = Order;

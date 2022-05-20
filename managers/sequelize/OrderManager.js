@@ -9,6 +9,10 @@ module.exports = class OrderManager extends Manager {
   static async find({ id }) { 
     return await this.executeQuery(Order, this.queries.find, [id]);
   }
+  static async findByValue(value) {
+    const params = { where: value };
+    return await this.executeQuery(Order, this.queries.findAll, [params]);
+  }
 
   static async findAvaiable({ id_deliverer }) {
     // asociados a repartidor no completadas (state =< 3)
