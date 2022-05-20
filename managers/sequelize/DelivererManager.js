@@ -19,7 +19,6 @@ module.exports = class DelivererManager extends Manager {
     return await this.executeQuery(Deliverer, this.queries.update, params);
   }
   static async updateCoordinates({ longitude, latitude }, { userid }) {
-    console.log(latitude, longitude, userid, "$$$$$$$$$$$$$$$$$$$$$$$$$$$");
     const params = [
       { longitude, latitude },
       { where: { userid }, returning: true },
