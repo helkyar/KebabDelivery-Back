@@ -34,7 +34,7 @@ module.exports = class Manager {
       .then(async () =>
         query === this.queries.findAll
           ? await model[query]()
-          : await model[query](...params)
+          : await model[query](...params),
       )
       .then((res) => {
         if (query === this.queries.update) {
