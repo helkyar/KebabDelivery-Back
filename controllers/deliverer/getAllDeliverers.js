@@ -2,6 +2,9 @@ const DelivererManager = require(`../../${process.env.MANAGER}/DelivererManager`
 const UserManager = require(`../../${process.env.MANAGER}/UserManager`);
 
 async function getAllDeliverers(req, res) {
+  
+  // Correct version must be done using sequelize associations wich gave us problems in this proyect
+
   const deliverers = await DelivererManager.findAll();
 
   const profile = await UserManager.find({ id: deliverers[0].userid });
