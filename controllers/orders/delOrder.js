@@ -1,4 +1,4 @@
-const OrderManager = require(`../../${process.env.MANAGER}/orderManager`);
+const OrderManager = require(`../../${process.env.MANAGER}/OrderManager`);
 
 async function delOrder(req, res) { 
   const data = req.params;
