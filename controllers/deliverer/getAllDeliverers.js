@@ -4,15 +4,10 @@ const UserManager = require(`../../${process.env.MANAGER}/UserManager`);
 async function getAllDeliverers(req, res) {
   const deliverers = await DelivererManager.findAll();
 
-  deliverers.map(async (deliverer) => {
-    console.log("DELIVERES ALL", deliverer);
-    if (!deliverer) return deliverer;
-    const profile = await UserManager.find({ id: deliverer.userid });
+  const profile = await UserManager.find({ id: deliverers[0].userid });
 
-    deliverer.phone = profile[0].phone;
-    deliverer.email = profile[0].email;
-    return deliverer;
-  });
+  deliverers[0].phone = profile[0].phone;
+  deliverers[0].email = profile[0].email;
 
   deliverers
     ? res.status(200).json(deliverers)
