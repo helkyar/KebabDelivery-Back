@@ -2,6 +2,9 @@ const Manager = require("./Manager");
 const Deliverer = require("./models/repartidorModel");
 
 module.exports = class DelivererManager extends Manager {
+  static async findAll() {
+    return await this.executeQuery(Deliverer, this.queries.findAll);
+  }
   static async create({ userid }) {
     const params = [{ userid }];
     return await this.executeQuery(Deliverer, this.queries.insert, params);

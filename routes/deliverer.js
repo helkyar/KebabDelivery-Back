@@ -17,5 +17,6 @@ router.get(
   "/delivered/:id",
   require("../controllers/deliverer/getDeliveredOrders")
 );
+router.get("/users", require("../controllers/deliverer/getAllDeliverers"));
 
 module.exports = router;
