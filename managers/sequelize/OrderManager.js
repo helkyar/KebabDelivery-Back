@@ -6,7 +6,7 @@ module.exports = class OrderManager extends Manager {
     return await this.executeQuery(Order, this.queries.findAll);
   }
 
-  static async find({ id }) { 
+  static async find({ id }) {
     return await this.executeQuery(Order, this.queries.find, [id]);
   }
   static async findByValue(value) {
@@ -14,15 +14,15 @@ module.exports = class OrderManager extends Manager {
     return await this.executeQuery(Order, this.queries.findAll, [params]);
   }
 
-  static async findAvaiable({ id_deliverer }) {
+  static async findAvaiable({ id_delivered }) {
     // asociados a repartidor no completadas (state =< 3)
     // o sin id asignada, no empezados y fecha actual o anterior
-    const params = { 
+    const params = {
       where: {
         $or: [
-          { id_deliverer, state: { $lte: 3 } },
+          { id_delivered, state: { $lte: 3 } },
           {
-            id_deliverer: null,
+            id_delivered: null,
             state: 1,
             dia_recogida: { $lte: new Date() },
           },
@@ -31,12 +31,12 @@ module.exports = class OrderManager extends Manager {
     };
     return await this.executeQuery(Order, this.queries.findAllOf, [params]);
   }
-  static async findCompleted({ id_deliverer }) {
+  static async findCompleted({ id_delivered }) {
     // asociados a repartidor no completadas (state =< 3)
     // o sin id asignada, no empezados y fecha actual o anterior
     const params = {
       where: {
-        id_deliverer,
+        id_delivered,
         state: { $gt: 3 },
       },
     };
@@ -53,7 +53,7 @@ module.exports = class OrderManager extends Manager {
       from,
       to,
       id_client,
-      id_deliverer,
+      id_delivered,
       pick_up_date,
       pick_up_time,
       delivered_time,
@@ -62,7 +62,7 @@ module.exports = class OrderManager extends Manager {
       letter,
       comment,
     },
-    { id },
+    { id }
   ) {
     const params = [
       {
@@ -70,7 +70,7 @@ module.exports = class OrderManager extends Manager {
         from,
         to,
         id_client,
-        id_deliverer,
+        id_delivered,
         pick_up_date,
         pick_up_time,
         delivered_time,

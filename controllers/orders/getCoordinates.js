@@ -19,14 +19,17 @@ async function getCoordinates(req, res) {
     longitude = "";
   }
 
-  const position = await DelivererManager.findByValue({ pakage: data.id });
+  if (order[0].id_delivered) {
+    const position = await DelivererManager.findByValue({
+      userid: order[0].id_delivered,
+    });
 
-  if (position && position[0]) {
-    latitude = position[0].latitude;
-    longitude = position[0].longitude;
+    if (position && position[0]) {
+      latitude = position[0].latitude;
+      longitude = position[0].longitude;
+    }
   }
-
-  position
+  order
     ? res.status(200).json({ latitude, longitude, state: order[0].state })
     : res.status(404).json({ error: "Doesn't exist" });
 }

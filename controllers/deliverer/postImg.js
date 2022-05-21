@@ -7,7 +7,6 @@ function postImg(req, res) {
 
   upload.single("file");
 
-  console.log(req.body, req.file, "PEAEAEOAE");
   const tempPath = req.file.path;
   const targetPath = path.join(__dirname, "./uploads/image.png");
 

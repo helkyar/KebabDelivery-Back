@@ -5,7 +5,7 @@ async function postOrder(req, res) {
   //(!) Validation
 
   const order = await OrderManager.create(data);
-  console.log(order, "post order");
+
   //(!) Universal manager -> model response
   order !== null
     ? res.status(200).json(order[0])

@@ -2,7 +2,7 @@ const fs = require("fs");
 
 async function getSignature(req, res) {
   const data = req.params;
-  console.log("HERE BITCH");
+
   // Setting the headers
   res.writeHead(200, {
     "Content-Type": "image/png",

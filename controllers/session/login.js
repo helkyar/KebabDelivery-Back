@@ -3,16 +3,15 @@ const jwt = require("jsonwebtoken");
 const UserManager = require(`../../${process.env.MANAGER}/UserManager`);
 
 async function checkLogin(req, res) {
-  console.log("Login controller");
   const credentials = req.body;
-  
+
   // Incorrect login___________________________________
   if (!credentials) {
     res.status(400).json({ error: "nice try" });
   }
 
   // Search user_______________________________________
-  const user = await UserManager.findByValue({email: credentials.email});
+  const user = await UserManager.findByValue({ email: credentials.email });
   if (!user || !user[0]) {
     return res.status(400).json({ error: "credenciales incorrectas" });
   }

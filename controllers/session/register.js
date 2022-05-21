@@ -3,7 +3,6 @@ const UserManager = require(`../../${process.env.MANAGER}/UserManager`);
 const ClientManager = require(`../../${process.env.MANAGER}/ClientManager`);
 
 async function register(req, res) {
-  console.log("Register controller");
   let data = req.body;
   //(!) Validation
   const salt = await bcrypt.genSalt(10);

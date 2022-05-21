@@ -18,8 +18,4 @@ router.get(
   require("../controllers/deliverer/getDeliveredOrders")
 );
 
-router.get("/all", require("../controllers/template/getAllTemplates"));
-router.post("/add", require("../controllers/template/postTemplate"));
-router.delete("/delete/:id", require("../controllers/template/delTemplate"));
-
 module.exports = router;

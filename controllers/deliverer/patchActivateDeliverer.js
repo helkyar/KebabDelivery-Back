@@ -1,7 +1,6 @@
 const DelivererManager = require(`../../${process.env.MANAGER}/DelivererManager`);
 
 async function patchActivateDeliverer(req, res) {
-  console.log("Template controller post");
   const id = req.params;
   const data = req.body;
   //(!) Validation
